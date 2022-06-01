@@ -66,7 +66,7 @@ $title = '會員註冊 - meow meow Donuts';
     });
     console.log("1",r);
     const result = await r.json();
-    console.log("2",result);
+    console.log("2222",result);
 
   };
 </script>
