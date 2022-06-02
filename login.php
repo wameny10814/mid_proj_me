@@ -1,7 +1,12 @@
-<?php 
-session_start();
+<?php require __DIR__ . '/parts/connect.php';
+$pageName = 'loginmember';
+$title = '會員登入 - meow meow Donuts';
+?>
+<?php include __DIR__ . '/parts/html-head.php' ?>
+<?php include __DIR__ . '/parts/html-navbar.php' ?>
+<!-- session_start(); -->
 
-$users =[
+<!-- $users =[
 
 ];
 
@@ -9,9 +14,13 @@ $output =[
     'error'=>'',
 ];
 if(!empty($_POST['account']) and !empty($_POST['password']) ){
-    $output['msg']='登入成功';
-    echo json_encode($output);
-    exit;
+    if($_POST['account'] === $_POST['account'] and $_POST['password'] === $_POST['password']){
+        $output['msg']='登入成功';
+        echo json_encode($output);
+        exit;
+
+    }
+   
     
 
 }else {
@@ -22,7 +31,7 @@ if(!empty($_POST['account']) and !empty($_POST['password']) ){
 
 
 
-?>
+?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,15 +41,46 @@ if(!empty($_POST['account']) and !empty($_POST['password']) ){
     <title>會員登入</title>
 </head>
 <body>
-    <form method="POST" >
-        <div class="container">
-            <div>會員登入</div>
-            <input type="text" name="name">
-            <br>
-            <input type="password" name="password">
-            <br>
-            <button>登入</button>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <form name="memberform" class="form1"  onsubmit="memberdata(); return false" novlaidate>
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">*帳號</label>
+              <input type="text" class="form-control" id="account" name="account" placeholder="帳號">
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">*密碼</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="帳號">
+            </div>
+
+            <button type="submit" class="btn btn-primary">送出</button>
+          </form>
         </div>
-    </form>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
+
+<?php include __DIR__ . '/parts/scripts.php' ?>
+<script>
+      async function memberdata() {
+    console.log("123");
+    const fd = new FormData(document.memberform);
+    console.log("0",fd);
+
+    const r = await fetch('login_api.php', {
+      method: 'POST',   
+      body: fd,
+    });
+    console.log("1",r);
+    const result = await r.json();
+    console.log("2222",result);
+  };
+
+</script>
+<?php include __DIR__ . '/parts/html-footer.php' ?>
