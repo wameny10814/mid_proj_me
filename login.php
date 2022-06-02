@@ -68,12 +68,16 @@ if(!empty($_POST['account']) and !empty($_POST['password']) ){
 
 <?php include __DIR__ . '/parts/scripts.php' ?>
 <script>
+
+  if(account === '' & password === '' ){
+    alert(message);
+  }
       async function memberdata() {
     console.log("123");
     const fd = new FormData(document.memberform);
     console.log("0",fd);
 
-    const r = await fetch('login_api.php', {
+    const r = await fetch('login_api2.php', {
       method: 'POST',   
       body: fd,
     });

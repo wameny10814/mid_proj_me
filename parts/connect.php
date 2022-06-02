@@ -1,8 +1,8 @@
 <?php
 //此為設定檔案 基本不會放在GIT裡面 因為不同環境會不同設定 會單獨放一個檔案
 $db_host = 'localhost'; // 主機名稱
-$db_user = 'sunny'; // 資料庫連線的用戶
-$db_pass = 'sunny666'; // 連線用戶的密碼
+$db_user = 'root'; // 資料庫連線的用戶
+$db_pass = ''; // 連線用戶的密碼
 $db_name = 'mid_proj';  // 資料庫名稱
 
 // data source name,"資料庫類型 此串不能有空白
