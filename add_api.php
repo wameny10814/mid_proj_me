@@ -41,10 +41,11 @@ if ($stmt->rowCount() == 1) {
     //用在訂單 order and order detail, order 主鍵為order detail外鍵
     //處理資料為$stmt 拿sid 為在$pdo拿
     $output['lastInsertId'] = $pdo->lastInsertId();
+    // header("Location: member_edit.php");
     }; 
     
 echo json_encode($output, JSON_UNESCAPED_UNICODE);
-echo json_encode($output, JSON_UNESCAPED_UNICODE);
+
 
 
 
