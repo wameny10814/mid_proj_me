@@ -14,14 +14,14 @@ $title = '會員資料修改 - meow meow Donuts';
 //   }
 // }
 
-$sid = isset($_GET['user'] ? intval($_GET['user']) : '';
-if(empty($sid)){
-    header('Location: ab-list.php');
-    exit;
+$sid = isset($_GET['user']['sid']) ? intval($_GET['user']['sid']) : '';
+// if(empty($sid)){
+//     header('Location: login.php');
+//     exit;
     
-}
+// 
 
-$row =$pdo->query("SELECT * FROM `member` WHERE sid=$_GET['user']['sid']")->fetch();
+$row =$pdo->query("SELECT * FROM `member` WHERE sid=$sid")->fetch();
 
 
 ?>
@@ -42,7 +42,7 @@ $row =$pdo->query("SELECT * FROM `member` WHERE sid=$_GET['user']['sid']")->fetc
           <form name="form1" class="form1"  onsubmit="adddata(); return false" novlaidate>
             <div class="mb-3">
               <label for="formGroupExampleInput" class="form-label">*帳號</label>
-              <input type="text" class="form-control" id="account" name="account" placeholder="帳號" value="<?= $r['account'] ?>">
+              <input type="text" class="form-control" id="account" name="account" placeholder="帳號" value="<?= $row['account'] ?>">
             </div>
             <div class="mb-3">
               <label for="formGroupExampleInput" class="form-label">*密碼</label>
