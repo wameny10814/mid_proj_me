@@ -50,8 +50,9 @@ $title = '會員登入 - meow meow Donuts';
 <?php include __DIR__ . '/parts/scripts.php' ?>
 <script>
     const error_f = document.querySelector(".red");
-    // const account_f = document.memberform.account.value;
-    // const password_f = document.memberform.password.value;
+    // const account_f = document.memberform.account;
+    // const password_f = document.memberform.password;
+    //此種取欄位方式只適用於input and button標籤
 
     // if (account_f === '' ) {
     //     error_f.classList.add('red');

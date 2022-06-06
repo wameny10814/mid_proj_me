@@ -50,6 +50,7 @@ if (!empty($row)) {
     $output['success'] = true;
     // echo '成功';
     $_SESSION['user'] = $row;
+    $_SESSION['sid'] = $row['sid'];
     echo json_encode($output, JSON_UNESCAPED_UNICODE);
     // header('Location: ./member_edit.php');
 
