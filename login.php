@@ -26,7 +26,7 @@ $title = '會員登入 - meow meow Donuts';
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <form name="memberform" class="memberform" onsubmit="memberdata(); return false" novlaidate>
+                        <form name="form1" class="form1" onsubmit="sendData();return false;" novalidate>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput" class="form-label">*帳號</label>
                                 <input type="text" class="form-control" id="account" name="account" placeholder="帳號">
@@ -36,7 +36,6 @@ $title = '會員登入 - meow meow Donuts';
                                 <input type="password" class="form-control" id="password" name="password" placeholder="帳號">
                             </div>
                             <div name="red" class="red"></div>
-
                             <button type="submit" class="btn btn-primary">送出</button>
                         </form>
                     </div>
@@ -50,31 +49,33 @@ $title = '會員登入 - meow meow Donuts';
 
 <?php include __DIR__ . '/parts/scripts.php' ?>
 <script>
-    const error_f = document.memberform.red;
-    const account_f =document.memberform.account;
-    const password_f =document.memberform.password;
+    const error_f = document.querySelector(".red");
+    // const account_f = document.memberform.account.value;
+    // const password_f = document.memberform.password.value;
 
-    if (account_f = " ") {
-            location.href = 'center.php'; 
-           
-        };
+    // if (account_f === '' ) {
+    //     error_f.classList.add('red');
+    //     error_f.innerText = '請填入帳號密碼';
+    // };
 
 
-    async function memberdata() {
-  
+
+    async function sendData() {
         console.log("123");
-        const fd = new FormData(document.memberform);
-        console.log("0", fd);
+        const fd = new FormData(document.form1);
+       
 
         const r = await fetch('login_api2.php', {
             method: 'POST',
             body: fd,
         });
-        console.log("1", r);
+       
+
         const result = await r.json();
-        console.log("2222", result);
+        console.log("2", result);
+        
         if (result.success) {
-            location.href = 'center.php'; // 跳轉
+            location.href = 'member_edit.php';
 
         } else {
             error_f.classList.add('red');
