@@ -9,6 +9,9 @@ $title = '會員註冊 - meow meow Donuts';
     display: flex;
     justify-content: center;
   }
+  .red{
+    color: red;
+  }
 </style>
 
 <div class="container">
@@ -17,6 +20,7 @@ $title = '會員註冊 - meow meow Donuts';
       <div class="card">
         <div class="card-body">
           <form name="form1" class="form1"  onsubmit="adddata(); return false" novlaidate>
+          
             <div class="mb-3">
               <label for="formGroupExampleInput" class="form-label">*帳號</label>
               <input type="text" class="form-control" id="account" name="account" placeholder="帳號">
@@ -45,7 +49,7 @@ $title = '會員註冊 - meow meow Donuts';
               <label for="formGroupExampleInput" class="form-label">地址</label>
               <input type="text" class="form-control" id="address" name="address" placeholder="帳號">
             </div>
-
+            <div name="red" class="red"></div>
             <button type="submit" class="btn btn-primary">送出</button>
           </form>
         </div>
@@ -55,6 +59,8 @@ $title = '會員註冊 - meow meow Donuts';
 </div>
 <?php include __DIR__ . '/parts/scripts.php' ?>
 <script>
+
+  const error_f =document.querySelector(".red");
   async function adddata() {
     console.log("123");
     const fd = new FormData(document.form1);
@@ -67,6 +73,15 @@ $title = '會員註冊 - meow meow Donuts';
     console.log("1",r);
     const result = await r.json();
     console.log("2222",result);
+
+    if (result.success) {
+            error_f.classList.add('red');
+            error_f.innerText = '新增成功';
+
+        } else {
+            error_f.classList.add('red');
+            error_f.innerText = '請填入帳號密碼';
+        };
 
   };
 </script>
