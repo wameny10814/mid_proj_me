@@ -29,6 +29,8 @@ $sid = isset($_SESSION['user']['sid']) ? intval($_SESSION['user']['sid']) : '';
 
 $row = $pdo->query("SELECT * FROM `member` WHERE sid=$sid")->fetch();
 
+$filename  = isset($_SESSION['user']['pic']) ? ($_SESSION['user']['pic']) : '';
+
 
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
@@ -53,7 +55,7 @@ $row = $pdo->query("SELECT * FROM `member` WHERE sid=$sid")->fetch();
                     <form name="mypic" class="pic" action="uploadedpic.api.php" method="post" enctype="multipart/form-data" style="display: none">
                         <input type="file" name="avatar" accept="image/*" />
                     </form>
-                    <div class="pic_view" style="width: 100%;"><img style="width: 100%;" id="myimg" src="" alt="" /></div>
+                    <div class="pic_view" style="width: 100%;"><img style="width: 100%;" id="myimg" src="./uploaded/<?= $filename  ?> " alt="" /></div>
                     
                     <button id="btn" class="btn btn-primary" onclick="uploadAvatar()">上傳大頭貼</button>
                     <form name="form1" class="form1" onsubmit="adddata(); return false" novlaidate>

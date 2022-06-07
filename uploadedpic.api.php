@@ -25,7 +25,7 @@ if (empty($extMap[$_FILES['avatar']['type']])) {
 }
 $ext = $extMap[$_FILES['avatar']['type']]; // 副檔名
 
-$filename = md5($_FILES['avatar']['name'] . rand()) . $ext;
+$filename =$_FILES['avatar']['name'] . rand() . $ext;
 $output['filename'] = $filename;
 
 // 把上傳的檔案搬移到指定的位置
@@ -47,15 +47,16 @@ $stmt->execute([
 ]);
 
 
-echo json_encode($output);
+// echo json_encode($output);
 
 if ($stmt->rowCount() == 1) {
     $output['msg'] ='pic success';
-    //最近一筆資料sid
-    //用在訂單 order and order detail, order 主鍵為order detail外鍵
-    //處理資料為$stmt 拿sid 為在$pdo拿
+    
+    $_SESSION['user']['pic']= $filename;
+    echo json_encode($output, JSON_UNESCAPED_UNICODE);
  
 }else{
     $output['msg'] = '頭貼無修改';
-}
+    echo json_encode($output, JSON_UNESCAPED_UNICODE);
+};
 
