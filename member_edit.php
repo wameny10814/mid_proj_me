@@ -53,7 +53,7 @@ $filename  = isset($_SESSION['user']['pic']) ? ($_SESSION['user']['pic']) : '';
             <div class="card">
                 <div class="card-body">
                     <form name="mypic" class="pic" action="uploadedpic.api.php" method="post" enctype="multipart/form-data" style="display: none">
-                        <input type="file" name="avatar" accept="image/*" />
+                        <input class="img" type="file" name="avatar" accept="image/*" value="" >
                     </form>
                     <div class="pic_view" style="width: 100%;"><img style="width: 100%;" id="myimg" src="./uploaded/<?= $filename  ?> " alt="" /></div>
                     
@@ -105,6 +105,7 @@ $filename  = isset($_SESSION['user']['pic']) ? ($_SESSION['user']['pic']) : '';
     const btn = document.querySelector("#btn");
     const myimg = document.querySelector("#myimg");
     const avatar = document.mypic.avatar;
+    // const img = document.querySelector(".img");
 
     avatar.addEventListener("change", async function() {
         // 上傳表單
@@ -116,6 +117,10 @@ $filename  = isset($_SESSION['user']['pic']) ? ($_SESSION['user']['pic']) : '';
         const obj = await r.json();
         console.log(obj);
         myimg.src = "./uploaded/" + obj.filename;
+        // const objfilename = obj.filename;
+        // objfilename = img;
+
+
     });
 
     function uploadAvatar() {
