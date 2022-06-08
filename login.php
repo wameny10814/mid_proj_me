@@ -18,6 +18,56 @@ $title = '會員登入 - meow meow Donuts';
     .red {
         color: red;
     }
+
+    body {
+        background-color: #E8E7E5;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+
+    .card {
+        border: none;
+        background-color: #E8E7E5;
+    }
+
+    .form-control {
+        background-color: #D9D9D9;
+
+    }
+
+    .btn {
+        border-radius: 1.5rem;
+        padding: .5rem 1.5rem;
+        background-color: #616153;
+        border: none;
+        color: white;
+
+    }
+
+    .btn:hover {
+        background-color: #F06D6D;
+    }
+
+    .add_msg {
+        text-align: center;
+        margin-bottom: 3rem;
+        margin-top: 3rem;
+    }
+
+    .add_msg a {
+        text-decoration: none;
+        color: #D01F1F;
+
+    }
+
+    .sumit_btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
 
 <body>
@@ -36,7 +86,15 @@ $title = '會員登入 - meow meow Donuts';
                                 <input type="password" class="form-control" id="password" name="password" placeholder="帳號">
                             </div>
                             <div name="red" class="red"></div>
-                            <button type="submit" class="btn btn-primary">送出</button>
+                            <div class="add_msg">
+                                <p>第一次光臨嗎?
+                                    <a href="./member_add.php">點此註冊</a>
+                                </p>
+                            </div>
+                            <div class="sumit_btn">
+                                <button type="submit" class="btn btn-primary">登入</button>
+                            </div>
+
                         </form>
                     </div>
                 </div>
@@ -64,17 +122,17 @@ $title = '會員登入 - meow meow Donuts';
     async function sendData() {
         console.log("123");
         const fd = new FormData(document.form1);
-       
+
 
         const r = await fetch('login_api2.php', {
             method: 'POST',
             body: fd,
         });
-       
+
 
         const result = await r.json();
         console.log("2", result);
-        
+
         if (result.success) {
             location.href = 'member_edit.php';
 

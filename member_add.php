@@ -5,12 +5,35 @@ $title = '會員註冊 - meow meow Donuts';
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/html-navbar.php' ?>
 <style>
+  body{
+    background-color: #E8E7E5;
+  }
   .row {
     display: flex;
     justify-content: center;
   }
   .red{
     color: red;
+  }
+  h3{
+    text-align: center;
+  }
+  .card{
+    border: none;
+    background-color:#E8E7E5;
+  }
+
+  .form-control{
+    background-color: #D9D9D9;
+    
+  }
+  .btn{
+    border-radius:1.5rem;
+    padding: .5rem 1.5rem;
+    background-color: #616153;
+    border: none;
+    color: white;
+   
   }
 </style>
 
@@ -19,15 +42,16 @@ $title = '會員註冊 - meow meow Donuts';
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
+          <h3>會員註冊</h3>
           <form name="form1" class="form1"  onsubmit="adddata(); return false" novlaidate>
-          
+             
             <div class="mb-3">
               <label for="formGroupExampleInput" class="form-label">*帳號</label>
               <input type="text" class="form-control" id="account" name="account" placeholder="帳號">
             </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label">*密碼</label>
-              <input type="password" class="form-control" id="password" name="password" placeholder="帳號">
+            <div class="mb-3" autocomplete="off">
+              <label for="formGroupExampleInput" class="form-label" autocomplete="off">*密碼</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="密碼" autocomplete="off">
             </div>
             <div class="mb-3">
               <label for="formGroupExampleInput" class="form-label">姓名</label>
@@ -77,6 +101,7 @@ $title = '會員註冊 - meow meow Donuts';
     if (result.success) {
             error_f.classList.add('red');
             error_f.innerText = '新增成功';
+            location.href = 'login.php';
 
         } else {
             error_f.classList.add('red');
